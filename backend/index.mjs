@@ -1,5 +1,6 @@
 import express from "express";
 import userRoutes from "./routes/userRoutes.mjs"
+import productRoutes from "./routes/productRoutes.mjs"
 import chalk from "chalk";
 import cors from "cors";
 import connectToDB from "./db/index.mjs";
@@ -20,6 +21,7 @@ app.use(
 app.use(express.json());
 const port = 5000;
 app.use("/api/auth",userRoutes)
+app.use("/api/cart",productRoutes)
 
 app.use("/", (req, res, next) => {
   console.log("Request URL:", req.url, "method: ", req.method);
