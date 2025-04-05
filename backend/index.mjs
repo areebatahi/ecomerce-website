@@ -19,7 +19,7 @@ app.use(
 
 
 app.use(express.json());
-const port = 5000;
+const port = 4000;
 app.use("/api/auth",userRoutes)
 app.use("/api/cart",productRoutes)
 

@@ -13,6 +13,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from './components/Footer';
 import Product from './components/Product';
+import ProductForm from './pages/productForm';
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/update" element={<Update />} />
         <Route path='/product' element={<Product/>}/>
+        <Route path='/productForm' element={<ProductForm/>}/>
       </Routes>
 
       <Footer />
