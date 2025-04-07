@@ -42,8 +42,8 @@ const ProductForm = () => {
             setLoading(false);
             console.log("Response:", response, "data", data);
             if (response.ok) {
-              localStorage.setItem("token",data.token)
-				localStorage.setItem("productId",data._id)
+              localStorage.setItem("productToken", data.product.token)
+              localStorage.setItem("productId", data.product.id)
               toast.success(data.message);
               navigate('/product');
             } else {

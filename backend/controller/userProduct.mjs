@@ -3,6 +3,7 @@ import "dotenv/config";
 import chalk from "chalk";
 import productSchema from "../schema/productSchema.mjs";
 import Product from "../models/product/product.mjs";
+import JWT from "jsonwebtoken";
 
 const createProduct = async (req, res) => {
     console.log(chalk.bgCyan("incoming call to product api"));
@@ -12,12 +13,15 @@ const createProduct = async (req, res) => {
     try {
         const product = await productSchema.validateAsync(req.body);
         const newProuct = await Product.create({ ...product });
+        var token = JWT.sign({ Product: product._id }, process.env.JWT_SECRET);
+        console.log(token);
+        
 
         await newProuct.save();
 
         res.status(201).json({
             message: "Product created successfully",
-            product: { id: newProuct.id, newProuct },
+            product: { id: newProuct.id, newProuct,token },
         });
     } catch (error) {
         if (error?.code === 11000) {
