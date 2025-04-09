@@ -1,22 +1,26 @@
+
 import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import Navigation from './components/Navigation'
-import About from './pages/About'
-import Contact from './pages/Contact'
-import Home from './pages/Home'
-import LoginPage from './pages/LoginPage'
-import Logout from './pages/Logout'
-import Profile from './pages/Profile'
-import Signup from './pages/Signup'
-import Update from './pages/Update'
+import { Routes, Route, useLocation  } from 'react-router-dom';
+import Home from './Pages/Home';
+import Navigation from './components/Navigation';
+import Contact from './Pages/Contact';
+import About from './Pages/About';
+import Footer from './components/Footer';
+import LoginPage from './Pages/LoginPage';
+import SignUp from './Pages/Signup';
+import Cart from "./Pages/Cart" 
+import Logout from "./Pages/Logout" 
+import Profile from "./Pages/Profile"
+import Admin from "./Pages/AdminPage"
+import Products from './Pages/Products';
+import Update from './Pages/Update';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Footer from './components/Footer';
-import Product from './components/Product';
-import ProductForm from './pages/productForm';
 
-function App() {
 
+const App = () => {
+  const location = useLocation();
+  const adminPage = location.pathname === '/admin'; 
   return (
     <>
       <ToastContainer
@@ -30,26 +34,24 @@ function App() {
         draggable
         pauseOnHover
       />
-
-      <Navigation />
-
+    
+      {!adminPage && <Navigation />} 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/logout" element={<Logout />} />
-        {/* <Route path="/admin" element={<AdminPages />} /> */}
+        <Route path="/admin" element={<Admin />} />
+        <Route path='/products' element={<Products />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/update" element={<Update />} />
-        <Route path='/product' element={<Product/>}/>
-        <Route path='/productForm' element={<ProductForm/>}/>
-      </Routes>
-
-      <Footer />
+    </Routes>
+    {!adminPage && <Footer />}
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

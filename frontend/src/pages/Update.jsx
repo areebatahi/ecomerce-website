@@ -17,7 +17,7 @@ const Update = () => {
       }
 
       try {
-        const response = await fetch("http://localhost:4000/api/auth/user/me", {
+        const response = await fetch("http://localhost:5000/api/auth/user/me", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -113,3 +113,4 @@ const Update = () => {
 };
 
 export default Update;
+

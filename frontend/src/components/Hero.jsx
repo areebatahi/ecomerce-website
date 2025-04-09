@@ -2,9 +2,9 @@ import React from 'react'
 import { useState, useEffect } from "react";
 
 const images = [
-	"./src/assets/images/carousel.png",
-	// "",
-	// "",
+	"https://provenreality.com/wp-content/uploads/2024/01/Augmented-Reality-Fashion-Ecommerce-A-Match-Made-in-Heaven.jpg",
+	"https://storage.googleapis.com/mageplaza.com/media/2024/01/09104808/90.jpg",
+	"https://media.istockphoto.com/id/1484799147/photo/hanging-clothes-on-sale-for-teens-and-kids-in-the-mall.jpg?s=612x612&w=0&k=20&c=ITHnJ3eyP3jck8fQCBks2KJtuTFi7-46FNdLll5V58g=",
 ];
 
 const Hero = () => {
@@ -33,7 +33,7 @@ const Hero = () => {
 					<img
 						src={images[currentIndex]}
 						alt={`Slide ${currentIndex+1}`}
-						className="w-full h-auto object-cover transition-transform duration-500"
+						className="w-full h-160 object-cover transition-transform duration-500"
 					/>
 				</div>
 

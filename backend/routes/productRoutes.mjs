@@ -1,10 +1,10 @@
-import express from "express";
-const router = express.Router();
-import { createProduct, getAllProduct, deleteProduct, updateProduct } from "../controller/userProduct.mjs";
+import express from 'express';
+import { addProduct,getAllProducts } from '../controller/productController.mjs';
+import { uploadImage } from '../Middleware/upload.mjs';
 
-router.get("/product", getAllProduct);
-router.post("/product", createProduct);
-router.put("/product/:id", updateProduct);
-router.delete("/product/:id", deleteProduct);
+const router = express.Router();
+
+router.get('/', getAllProducts);
+router.post('/add', uploadImage, addProduct);
 
 export default router;

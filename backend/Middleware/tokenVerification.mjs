@@ -2,38 +2,28 @@ import jwt from "jsonwebtoken";
 import "dotenv/config";
 
 const tokenVerification = (req, res, next) => {
-  try {
-    const authHeader = req.headers.authorization;
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      res.status(401).send({ status: 401, message: "Unauthorize Access" });
+    try {
+
+        if (req.headers?.authorization) {
+            const token = req.headers.authorization.split(" ")[1];
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            if (decoded) {
+                req.user = decoded; // Attach decoded user data (e.g., email) to the request object
+                next();
+            } else {
+                res.status(401).send({ status: 401, message: "Unauthorized Token" });
+            }
+        } else {
+            res.status(401).send({ status: 401, message: "Unauthorized Access" });
+        }
+    } catch (err) {
+        res.status(401).send({ err: err, status: 401, message: "Unauthorized Token" });
     }
-  
-    const token = authHeader.split(" ")[1];    
-    if (req.headers?.authorization) {
-      var decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.user=decoded
-      if (decoded) {
-        next();
-      } else {
-        res.status(401).send({ status: 401, message: "Unauthorize Access" });
-      }
-    } else {  
-      res.status(401).send({ status: 401, message: "Unauthorize Access" });
-    }
-  } catch (err) {
-    res
-      .status(401)
-      .send({ err: err, status: 401, message: "Unauthorize Access" });
-  }
 };
 export default tokenVerification;
-//   try {
-//     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-//     req.user = decoded;  // Ensure req.user is set
-//     next();
-//   } catch (error) {
-//     return res.status(403).json({ error: "Forbidden: Invalid token" });
-//   }
-// };
 
-// export default tokenVerification
+// fetch("url",{
+//     headers:{
+//         "Authorization":"Barear token"
+//     }
+// })

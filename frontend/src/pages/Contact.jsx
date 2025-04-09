@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
 const Contact = () => {
 	const [formData, setFormData] = useState({
@@ -33,7 +34,7 @@ const Contact = () => {
 		setLoading(true);
 
 		try {
-			const response = await fetch('http://localhost:5000/api/contact', {
+			const response = await fetch(`${apiUrl}/contact`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(formData),
@@ -119,7 +120,7 @@ const Contact = () => {
 							</div>
 							<button
 								type='submit'
-								className="w-full bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 rounded-md transition-all duration-300 disabled:bg-gray-500"
+								className='w-full py-3 bg-[#fc8019] text-white rounded-lg hover:bg-[#e57312] transition duration-300 flex items-center justify-center'
 								disabled={loading}>
 								{loading ? 'Sending...' : 'Send Message'}
 							</button>
