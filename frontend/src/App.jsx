@@ -34,7 +34,7 @@ const App = () => {
         draggable
         pauseOnHover
       />
-
+   
       {!adminPage && <Navigation />}
       <Routes>
         <Route path="/" element={<Home />} />
