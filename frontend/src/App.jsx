@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import Home from './Pages/Home';
 import Navigation from './components/Navigation';
 import Contact from './Pages/Contact';
 import About from './Pages/About';
@@ -16,6 +15,7 @@ import Products from './Pages/Products';
 import Update from './Pages/Update';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Home from './Pages/Home';
 
 
 const App = () => {
