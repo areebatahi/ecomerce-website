@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Routes, Route, useLocation  } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './Pages/Home';
 import Navigation from './components/Navigation';
 import Contact from './Pages/Contact';
@@ -8,8 +8,8 @@ import About from './Pages/About';
 import Footer from './components/Footer';
 import LoginPage from './Pages/LoginPage';
 import SignUp from './Pages/Signup';
-import Cart from "./Pages/Cart" 
-import Logout from "./Pages/Logout" 
+import Cart from "./Pages/Cart"
+import Logout from "./Pages/Logout"
 import Profile from "./Pages/Profile"
 import Admin from "./Pages/AdminPage"
 import Products from './Pages/Products';
@@ -20,7 +20,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const location = useLocation();
-  const adminPage = location.pathname === '/admin'; 
+  const adminPage = location.pathname === '/admin';
   return (
     <>
       <ToastContainer
@@ -34,8 +34,8 @@ const App = () => {
         draggable
         pauseOnHover
       />
-    
-      {!adminPage && <Navigation />} 
+
+      {!adminPage && <Navigation />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
@@ -48,8 +48,8 @@ const App = () => {
         <Route path='/products' element={<Products />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/update" element={<Update />} />
-    </Routes>
-    {!adminPage && <Footer />}
+      </Routes>
+      {!adminPage && <Footer />}
     </>
   );
 };
