@@ -1,7 +1,6 @@
 
 import React from 'react';
-import { Routes, Route, useLocation  } from 'react-router-dom';
-import Home from './Pages/Home';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import { ToastContainer } from 'react-toastify';
@@ -20,7 +19,7 @@ import Update from './Pages/Update';
 
 const App = () => {
   const location = useLocation();
-  const adminPage = location.pathname === '/admin'; 
+  const adminPage = location.pathname === '/admin';
   return (
     <>
       <ToastContainer
@@ -34,8 +33,8 @@ const App = () => {
         draggable
         pauseOnHover
       />
-    
-      {!adminPage && <Navigation />} 
+   
+      {!adminPage && <Navigation />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
@@ -48,8 +47,8 @@ const App = () => {
         <Route path='/products' element={<ProductsPage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/update" element={<Update />} />
-    </Routes>
-    {!adminPage && <Footer />}
+      </Routes>
+      {!adminPage && <Footer />}
     </>
   );
 };
