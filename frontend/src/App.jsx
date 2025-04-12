@@ -5,7 +5,7 @@ import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Contact from './Pages/Contact';
+import Contact from '/Pages/Contact.jsx';
 import About from './Pages/About';
 import Login from './Pages/LoginPage';
 import Signup from './Pages/Signup';
