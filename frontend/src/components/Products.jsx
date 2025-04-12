@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
-const Products = () => {
+const ProductsPage = () => {
 	const [products, setProducts] = useState([]);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -141,4 +141,4 @@ const Products = () => {
 	);
 };
 
-export default Products;
+export default ProductsPage;
