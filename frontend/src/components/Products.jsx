@@ -3,17 +3,20 @@ import axios from 'axios';
 import AddProductModal from './AddProductModal';
 import { faTrash, faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import UpdateProduct from './UpdateProductModal';
 
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
 const ProductsPage = () => {
 	const [products, setProducts] = useState([]);
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isUpdateProductModalOpen, setIsUpdateProductModalOpen] = useState(false);
 	const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 	const [selectedProduct, setSelectedProduct] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [isAdding, setIsAdding] = useState(false);
 	const [isDeleting, setIsDeleting] = useState(false);
+
 
 	// Fetch products
 	useEffect(() => {
@@ -90,7 +93,7 @@ const ProductsPage = () => {
 								<button
 									onClick={() => {
 										setSelectedProduct(product);
-										setIsModalOpen(true);
+										setIsUpdateProductModalOpen(true);
 									}}
 									className='bg-orange-400 text-white px-4 py-2 rounded hover:bg-orange-600'
 									disabled={isAdding}>
@@ -115,6 +118,14 @@ const ProductsPage = () => {
 				isOpen={isModalOpen}
 
 				onClose={() => setIsModalOpen(false)}
+				product={selectedProduct}
+				setProducts={setProducts}
+				setIsAdding={setIsAdding}
+			/>
+			<UpdateProduct
+				isOpen={isUpdateProductModalOpen}
+
+				onClose={() => setIsUpdateProductModalOpen(false)}
 				product={selectedProduct}
 				setProducts={setProducts}
 				setIsAdding={setIsAdding}
